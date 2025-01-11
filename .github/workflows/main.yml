@@ -21,6 +21,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
+          sudo apt install libqt5gui5-dev
           pip install -r requirements.txt
+          sudo apt-get update
       - name: Run tests
         run: python tests.py
