@@ -13,14 +13,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.12'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Install libxcb-icccm4
-        run: |
-          sudo apt-get install libxcb-icccm4
-          sudo apt update
       - name: Run tests
-        run: |
-          export QT_DEBUG_PLUGINS=1
-          python -m unittest
+        run: python -m unittest
