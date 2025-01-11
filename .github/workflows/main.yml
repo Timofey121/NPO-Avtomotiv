@@ -19,6 +19,9 @@ jobs:
       - name: Install Qt dependencies
         run: |
           sudo apt-get update
+          sudo add-apt-repository universe
+          sudo add-apt-repository multiverse
+          sudo apt update
           sudo apt-get install libqt5-default libxcb1-dev
       - name: Run tests
         run: |
