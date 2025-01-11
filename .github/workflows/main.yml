@@ -9,16 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Install Qt dependencies
-        run: |
-          sudo apt-get update  
-          sudo apt-get install libqt5-default libxcb1-dev libxcb-image0 libxcb-icccm4
-      - name: Run tests
-        run: python -m unittest
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+    - name: Start Xvfb
+      run: Xvfb :1 -screen 0 1024x768x24 &
+    - name: Run tests
+      run: |
+        DISPLAY=:1 python -m unittest discover
