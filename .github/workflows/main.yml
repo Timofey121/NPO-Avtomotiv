@@ -16,13 +16,6 @@ jobs:
           python-version: '3.9'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Install Qt dependencies
-        run: |
-          sudo apt-get update
-          sudo add-apt-repository universe
-          sudo add-apt-repository multiverse
-          sudo apt update
-          sudo apt-get install libqt5-default libxcb1-dev
       - name: Run tests
         run: |
           export QT_DEBUG_PLUGINS=1
