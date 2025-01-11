@@ -25,4 +25,4 @@ jobs:
       run: Xvfb :1 -screen 0 1024x768x24 &
     - name: Run tests
       run: |
-        DISPLAY=:1 python -m unittest test
+        DISPLAY=:1 python -m unittest test.py
