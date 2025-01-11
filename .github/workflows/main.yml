@@ -14,13 +14,15 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-    - name: Install dependencies
+    - name: Create virtual environment
       run: |
         python -m venv venv
         source venv/bin/activate
+    - name: Install dependencies
+      run: |
         pip install -r requirements.txt
-    - name: Start Xvfb
+    - name: Start Xvfb (if required)
       run: Xvfb :1 -screen 0 1024x768x24 &
     - name: Run tests
       run: |
-        DISPLAY=:1 python -m unittest discover
+        DISPLAY=:1 python -m unittest test
