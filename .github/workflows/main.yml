@@ -16,6 +16,10 @@ jobs:
           python-version: '3.9'
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Install libxcb-icccm4
+        run: |
+          sudo apt-get install libxcb-icccm4
+          sudo apt update
       - name: Run tests
         run: |
           export QT_DEBUG_PLUGINS=1
