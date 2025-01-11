@@ -20,7 +20,7 @@ jobs:
           source venv/bin/activate
       - name: Install dependencies
         run: |
-          sudo apt-get update  # Update package lists (optional)
+          sudo apt-get update
           sudo apt-get install libqt5-default libxcb1-dev libxcb-image0 libxcb-icccm4 
           pip install -r requirements.txt
       - name: Start Xvfb
